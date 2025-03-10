@@ -2,14 +2,12 @@
 def sum_of_divisible(a, b, c):
     
     total_sum = 0
-    
     for num in range(a, b + 1):
         if num % c == 0:
             total_sum += num
     
     return total_sum
 
-# Example usage
 a = int(input("Enter the starting number (a): "))
 b = int(input("Enter the ending number (b): "))
 c = int(input("Enter the divisor (c): "))
