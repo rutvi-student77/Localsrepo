@@ -1,3 +1,4 @@
+"Write a Program that takes coordinates of two points on a two-dimensional plane and returns the length of the line segment connecting those two points."
 import math
 
 def calculate_distance(x1, y1, x2, y2):
