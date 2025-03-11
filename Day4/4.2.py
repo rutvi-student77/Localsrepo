@@ -1,5 +1,5 @@
 "Create a function/input that counts the integer's number of digits.Solve this without using strings."
-
+" count(318) ➞ 3,count(-92563) ➞ 5,count(4666) ➞ 4,count(-314890) ➞ 6,count(654321) ➞ 6,count(638476) ➞ 6"
 def count(number):
     number = abs(number)
     
