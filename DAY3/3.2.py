@@ -1,4 +1,5 @@
 "Create a program that takes three arguments a, b, c and returns the sum of the numbers that are evenly divided by c from the range a, b inclusive"
+
 def sum_of_divisible(a, b, c):
     
     total_sum = 0

@@ -1,0 +1,17 @@
+{
+    "data": [
+        {
+            "Name": "rutvi",
+            "age": 28,
+            "email": "xyz@gmail.com"
+        }
+    ],
+    "Marks": [
+        {
+            "English": 100,
+            "gujrati": 98
+        }
+    ],
+    "count": [5, 8, 9, 10,{"name":"xyz"}]
+}
+

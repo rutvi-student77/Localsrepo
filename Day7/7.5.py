@@ -1,66 +1,80 @@
 "Import python program(previous OOP based calculator) and run in this program."
+def is_prime(n):
+    if n <= 1:
+        return False
+    for i in range(2, int(n ** 0.5) + 1):
+        if n % i == 0:
+            return False
+    return True
 
-import json
 
+def sum_of_primes(numbers):
+    total_sum = 0
+    for num in numbers:
+        if is_prime(num):
+            total_sum += num
+    return total_sum
+
+# OOP-based Calculator class
 class Calculator:
     def __init__(self):
-        pass
-    
-    def add(self, a, b):
-        return a + b
-    
-    def subtract(self, a, b):
-        return a - b
-    
-    def multiply(self, a, b):
-        return a * b
-    
-    def divide(self, a, b):
-        if b != 0:
-            return a / b
+        self.result = 0
+
+    def add(self, x, y):
+        self.result = x + y
+        return self.result
+
+    def subtract(self, x, y):
+        self.result = x - y
+        return self.result
+
+    def multiply(self, x, y):
+        self.result = x * y
+        return self.result
+
+    def divide(self, x, y):
+        if y != 0:
+            self.result = x / y
         else:
-            return "Cannot divide by zero."
-    
-    def power(self, a, b):
-        return a ** b
+            self.result = "Error! Division by zero."
+        return self.result
 
-def write_to_json_file(file_path, data):
-    try:
-        with open(file_path, 'w') as file:
-            json.dump(data, file, indent=4)
-        print(f"Results have been written to {file_path}")
-    except Exception as e:
-        print(f"Error: {e}")
+    def get_result(self):
+        return self.result
 
-def read_json_file(file_path):
-    try:
-        with open(file_path, 'r') as file:
-            data = json.load(file)
-            print(json.dumps(data, indent=4))  
-    except FileNotFoundError:
-        print(f"Error: The file {file_path} does not exist.")
-    except json.JSONDecodeError:
-        print("Error: Failed to decode JSON from the file.")
+def main():
+    numbers = list(map(int, input("Enter a list of numbers separated by spaces: ").split()))
+    prime_sum_result = sum_of_primes(numbers)
+    print(f"The sum of all prime numbers in the list is: {prime_sum_result}")
+
+    calc = Calculator()
+    print("\nBasic Calculator")
+    while True:
+        print("\nOptions:")
+        print("1. Add")
+        print("2. Subtract")
+        print("3. Multiply")
+        print("4. Divide")
+        print("5. Exit")
+        choice = input("Enter choice: ")
+
+        if choice == '5':
+            print("Exiting calculator.")
+            break
+        elif choice in ['1', '2', '3', '4']:
+            x = float(input("Enter first number: "))
+            y = float(input("Enter second number: "))
+
+            if choice == '1':
+                print(f"{x} + {y} = {calc.add(x, y)}")
+            elif choice == '2':
+                print(f"{x} - {y} = {calc.subtract(x, y)}")
+            elif choice == '3':
+                print(f"{x} * {y} = {calc.multiply(x, y)}")
+            elif choice == '4':
+                print(f"{x} / {y} = {calc.divide(x, y)}")
+        else:
+            print("Invalid input. Please try again.")
 
 if __name__ == "__main__":
-    calc = Calculator()
-    
-    addition_result = calc.add(10, 5)
-    subtraction_result = calc.subtract(10, 5)
-    multiplication_result = calc.multiply(10, 5)
-    division_result = calc.divide(10, 5)
-    power_result = calc.power(2, 3)
-    
-    results = {
-        "addition": addition_result,
-        "subtraction": subtraction_result,
-        "multiplication": multiplication_result,
-        "division": division_result,
-        "power": power_result
-    }
-    
-    file_path = 'calculator_results.json'
-    
-    write_to_json_file(file_path, results)
-    
-    read_json_file(file_path)
+    main()
