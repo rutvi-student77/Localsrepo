@@ -2,10 +2,6 @@
 
 import json
 
-
-
-
-
 data_to_write = {
     "name": "Jane ",
     "age": 25,
@@ -15,5 +11,3 @@ data_to_write = {
 
 file_path =open( 'student.json',"w") 
 json.dump(data_to_write, file_path, indent=4)
-
-

@@ -15,7 +15,6 @@ def sum_of_primes(numbers):
             total_sum += num
     return total_sum
 
-# OOP-based Calculator class
 class Calculator:
     def __init__(self):
         self.result = 0
